@@ -3,6 +3,49 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_setup">
+    android:id="@+id/navigation_setup"
+    app:startDestination="@id/gameMenu">
 
+    <fragment
+        android:id="@+id/gameMenu"
+        android:name="com.devdhruv.minesweeper.Fragments.GameMenu"
+        android:label="fragment_game_menu"
+        tools:layout="@layout/fragment_game_menu" >
+        <action
+            android:id="@+id/action_gameMenu_to_easyPlay"
+            app:destination="@id/easyPlay" />
+        <action
+            android:id="@+id/action_gameMenu_to_mediumPlay"
+            app:destination="@id/mediumPlay" />
+        <action
+            android:id="@+id/action_gameMenu_to_hardPlay"
+            app:destination="@id/hardPlay" />
+    </fragment>
+    <fragment
+        android:id="@+id/mediumPlay"
+        android:name="com.devdhruv.minesweeper.Fragments.MediumPlay"
+        android:label="fragment_medium_play"
+        tools:layout="@layout/fragment_medium_play" >
+        <action
+            android:id="@+id/action_mediumPlay_to_gameMenu"
+            app:destination="@id/gameMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/easyPlay"
+        android:name="com.devdhruv.minesweeper.Fragments.EasyPlay"
+        android:label="fragment_easy_play"
+        tools:layout="@layout/fragment_easy_play" >
+        <action
+            android:id="@+id/action_easyPlay_to_gameMenu"
+            app:destination="@id/gameMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/hardPlay"
+        android:name="com.devdhruv.minesweeper.Fragments.HardPlay"
+        android:label="fragment_hard_play"
+        tools:layout="@layout/fragment_hard_play" >
+        <action
+            android:id="@+id/action_hardPlay_to_gameMenu"
+            app:destination="@id/gameMenu" />
+    </fragment>
 </navigation>
