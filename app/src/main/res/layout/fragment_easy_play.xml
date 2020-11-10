@@ -1,14 +1,529 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.EasyPlay">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Easy" />
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal" >
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:text="TODO: ADD TIMER HERE" />
+
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/t11"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t12"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t13"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t14"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t15"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t16"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t17"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t21"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t22"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t23"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t24"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t25"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t26"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t27"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t31"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t32"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t33"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t34"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t35"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t36"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t37"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t41"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t42"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t43"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t44"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t45"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t46"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t47"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t51"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t52"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t53"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t54"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t55"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t56"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t57"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t61"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t62"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t63"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t64"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t65"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t66"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t67"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t71"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t72"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t73"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t74"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t75"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t76"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t77"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t81"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t82"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t83"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t84"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t85"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t86"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t87"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t91"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t92"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t93"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t94"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t95"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t96"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t97"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t101"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t102"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t103"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t104"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t105"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t106"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+
+        <TextView
+            android:id="@+id/t107"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/round_idle_tile" />
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
