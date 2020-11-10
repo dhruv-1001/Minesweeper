@@ -2,20 +2,19 @@ package com.devdhruv.minesweeper.Fragments
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.devdhruv.minesweeper.R
 import com.devdhruv.minesweeper.R.layout
 
-class EasyPlay : Fragment(), View.OnClickListener {
+class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
     private val textMap = HashMap<TextView, String>()
     private val reverseTextMap = HashMap<String, TextView>()
-    private val openedTiles = Array(10) {BooleanArray(7) {false} }
-    private var board   = Array(10) {IntArray(7) {0} }
+    private val board   = Array(10) {IntArray(7) {0} }
+    private var openedTiles = Array(10) {BooleanArray(7) {false} }
+    private var markedTiles = Array(10) {BooleanArray(7) {false} }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -315,10 +314,84 @@ class EasyPlay : Fragment(), View.OnClickListener {
         t105.setOnClickListener(this)
         t106.setOnClickListener(this)
         t107.setOnClickListener(this)
+
+        t11.setOnLongClickListener(this)
+        t12.setOnLongClickListener(this)
+        t13.setOnLongClickListener(this)
+        t14.setOnLongClickListener(this)
+        t15.setOnLongClickListener(this)
+        t16.setOnLongClickListener(this)
+        t17.setOnLongClickListener(this)
+        t21.setOnLongClickListener(this)
+        t22.setOnLongClickListener(this)
+        t23.setOnLongClickListener(this)
+        t24.setOnLongClickListener(this)
+        t25.setOnLongClickListener(this)
+        t26.setOnLongClickListener(this)
+        t27.setOnLongClickListener(this)
+        t31.setOnLongClickListener(this)
+        t32.setOnLongClickListener(this)
+        t33.setOnLongClickListener(this)
+        t34.setOnLongClickListener(this)
+        t35.setOnLongClickListener(this)
+        t36.setOnLongClickListener(this)
+        t37.setOnLongClickListener(this)
+        t41.setOnLongClickListener(this)
+        t42.setOnLongClickListener(this)
+        t43.setOnLongClickListener(this)
+        t44.setOnLongClickListener(this)
+        t45.setOnLongClickListener(this)
+        t46.setOnLongClickListener(this)
+        t47.setOnLongClickListener(this)
+        t51.setOnLongClickListener(this)
+        t52.setOnLongClickListener(this)
+        t53.setOnLongClickListener(this)
+        t54.setOnLongClickListener(this)
+        t55.setOnLongClickListener(this)
+        t56.setOnLongClickListener(this)
+        t57.setOnLongClickListener(this)
+        t61.setOnLongClickListener(this)
+        t62.setOnLongClickListener(this)
+        t63.setOnLongClickListener(this)
+        t64.setOnLongClickListener(this)
+        t65.setOnLongClickListener(this)
+        t66.setOnLongClickListener(this)
+        t67.setOnLongClickListener(this)
+        t71.setOnLongClickListener(this)
+        t72.setOnLongClickListener(this)
+        t73.setOnLongClickListener(this)
+        t74.setOnLongClickListener(this)
+        t75.setOnLongClickListener(this)
+        t76.setOnLongClickListener(this)
+        t77.setOnLongClickListener(this)
+        t81.setOnLongClickListener(this)
+        t82.setOnLongClickListener(this)
+        t83.setOnLongClickListener(this)
+        t84.setOnLongClickListener(this)
+        t85.setOnLongClickListener(this)
+        t86.setOnLongClickListener(this)
+        t87.setOnLongClickListener(this)
+        t91.setOnLongClickListener(this)
+        t92.setOnLongClickListener(this)
+        t93.setOnLongClickListener(this)
+        t94.setOnLongClickListener(this)
+        t95.setOnLongClickListener(this)
+        t96.setOnLongClickListener(this)
+        t97.setOnLongClickListener(this)
+        t101.setOnLongClickListener(this)
+        t102.setOnLongClickListener(this)
+        t103.setOnLongClickListener(this)
+        t104.setOnLongClickListener(this)
+        t105.setOnLongClickListener(this)
+        t106.setOnLongClickListener(this)
+        t107.setOnLongClickListener(this)
+
     }
 
-    override fun onClick(v: View?){
-        val tapBox = v as TextView
+
+
+    override fun onClick(view: View?){
+        val tapBox = view as TextView
         var row:Int = 0
         var col:Int = 0
         val tv = textMap[tapBox]
@@ -333,6 +406,7 @@ class EasyPlay : Fragment(), View.OnClickListener {
             }
         }
         if (openedTiles[row][col]) return
+        if (markedTiles[row][col]) return
         if (board[row][col] == -1){
             tapBox.setBackgroundResource(R.drawable.round_mine_tile)
         }
@@ -346,6 +420,33 @@ class EasyPlay : Fragment(), View.OnClickListener {
             tapBox.setBackgroundResource(R.drawable.round_blank_tile)
             openBoard(row, col)
         }
+    }
+
+    override fun onLongClick(view: View?): Boolean {
+        val tapBox = view as TextView
+        var row:Int = 0
+        var col:Int = 0
+        val tv = textMap[tapBox]
+        if (tv != null) {
+            if (tv.length == 5){
+                col = tv[4].toString().toInt() - 1
+                row = 9
+            }
+            else{
+                row = tv[1].toString().toInt() - 1
+                col = tv[3].toString().toInt() - 1
+            }
+        }
+        if (openedTiles[row][col]) return false
+        if (markedTiles[row][col]){
+            markedTiles[row][col] = false
+            tapBox.setBackgroundResource(R.drawable.round_idle_tile)
+        }
+        else{
+            markedTiles[row][col] = true
+            tapBox.setBackgroundResource(R.drawable.round_marked_tile)
+        }
+        return true
     }
 
     private fun openBoard(row:Int, col:Int){
@@ -415,5 +516,4 @@ class EasyPlay : Fragment(), View.OnClickListener {
         board[i][j]++
 
     }
-
 }
