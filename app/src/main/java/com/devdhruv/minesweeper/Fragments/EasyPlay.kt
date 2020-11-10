@@ -388,12 +388,10 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
     }
 
-
-
     override fun onClick(view: View?){
         val tapBox = view as TextView
-        var row:Int = 0
-        var col:Int = 0
+        var row = 0
+        var col = 0
         val tv = textMap[tapBox]
         if (tv != null) {
             if (tv.length == 5){
@@ -424,8 +422,8 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
     override fun onLongClick(view: View?): Boolean {
         val tapBox = view as TextView
-        var row:Int = 0
-        var col:Int = 0
+        var row = 0
+        var col = 0
         val tv = textMap[tapBox]
         if (tv != null) {
             if (tv.length == 5){
