@@ -1,18 +1,20 @@
 package com.devdhruv.minesweeper.Fragments
 
-import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.devdhruv.minesweeper.R
+import com.devdhruv.minesweeper.R.layout
 
 class EasyPlay : Fragment(), View.OnClickListener {
 
     private val textMap = HashMap<TextView, String>()
+    private val reverseTextMap = HashMap<String, TextView>()
+    private val openedTiles = Array(10) {BooleanArray(7) {false} }
     private var board   = Array(10) {IntArray(7) {0} }
 
     override fun onCreateView(
@@ -20,8 +22,15 @@ class EasyPlay : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view:View =  inflater.inflate(R.layout.fragment_easy_play, container, false)
+        val view:View =  inflater.inflate(layout.fragment_easy_play, container, false)
 
+        init(view)
+        generateMines()
+
+        return view
+    }
+
+    private fun init(view: View){
         val t11: TextView = view.findViewById(R.id.t11)
         val t12: TextView = view.findViewById(R.id.t12)
         val t13: TextView = view.findViewById(R.id.t13)
@@ -164,7 +173,77 @@ class EasyPlay : Fragment(), View.OnClickListener {
         textMap[t106] = "t10_6"
         textMap[t107] = "t10_7"
 
-//        generateMines()
+        reverseTextMap["t1_1"] = t11
+        reverseTextMap["t1_2"] = t12
+        reverseTextMap["t1_3"] = t13
+        reverseTextMap["t1_4"] = t14
+        reverseTextMap["t1_5"] = t15
+        reverseTextMap["t1_6"] = t16
+        reverseTextMap["t1_7"] = t17
+        reverseTextMap["t2_1"] = t21
+        reverseTextMap["t2_2"] = t22
+        reverseTextMap["t2_3"] = t23
+        reverseTextMap["t2_4"] = t24
+        reverseTextMap["t2_5"] = t25
+        reverseTextMap["t2_6"] = t26
+        reverseTextMap["t2_7"] = t27
+        reverseTextMap["t3_1"] = t31
+        reverseTextMap["t3_2"] = t32
+        reverseTextMap["t3_3"] = t33
+        reverseTextMap["t3_4"] = t34
+        reverseTextMap["t3_5"] = t35
+        reverseTextMap["t3_6"] = t36
+        reverseTextMap["t3_7"] = t37
+        reverseTextMap["t4_1"] = t41
+        reverseTextMap["t4_2"] = t42
+        reverseTextMap["t4_3"] = t43
+        reverseTextMap["t4_4"] = t44
+        reverseTextMap["t4_5"] = t45
+        reverseTextMap["t4_6"] = t46
+        reverseTextMap["t4_7"] = t47
+        reverseTextMap["t5_1"] = t51
+        reverseTextMap["t5_2"] = t52
+        reverseTextMap["t5_3"] = t53
+        reverseTextMap["t5_4"] = t54
+        reverseTextMap["t5_5"] = t55
+        reverseTextMap["t5_6"] = t56
+        reverseTextMap["t5_7"] = t57
+        reverseTextMap["t6_1"] = t61
+        reverseTextMap["t6_2"] = t62
+        reverseTextMap["t6_3"] = t63
+        reverseTextMap["t6_4"] = t64
+        reverseTextMap["t6_5"] = t65
+        reverseTextMap["t6_6"] = t66
+        reverseTextMap["t6_7"] = t67
+        reverseTextMap["t7_1"] = t71
+        reverseTextMap["t7_2"] = t72
+        reverseTextMap["t7_3"] = t73
+        reverseTextMap["t7_4"] = t74
+        reverseTextMap["t7_5"] = t75
+        reverseTextMap["t7_6"] = t76
+        reverseTextMap["t7_7"] = t77
+        reverseTextMap["t8_1"] = t81
+        reverseTextMap["t8_2"] = t82
+        reverseTextMap["t8_3"] = t83
+        reverseTextMap["t8_4"] = t84
+        reverseTextMap["t8_5"] = t85
+        reverseTextMap["t8_6"] = t86
+        reverseTextMap["t8_7"] = t87
+        reverseTextMap["t9_1"] = t91
+        reverseTextMap["t9_2"] = t92
+        reverseTextMap["t9_3"] = t93
+        reverseTextMap["t9_4"] = t94
+        reverseTextMap["t9_5"] = t95
+        reverseTextMap["t9_6"] = t96
+        reverseTextMap["t9_7"] = t97
+        reverseTextMap["t10_1"] = t101
+        reverseTextMap["t10_2"] = t102
+        reverseTextMap["t10_3"] = t103
+        reverseTextMap["t10_4"] = t104
+        reverseTextMap["t10_5"] = t105
+        reverseTextMap["t10_6"] = t106
+        reverseTextMap["t10_7"] = t107
+
 
         t11.setOnClickListener(this)
         t12.setOnClickListener(this)
@@ -236,25 +315,104 @@ class EasyPlay : Fragment(), View.OnClickListener {
         t105.setOnClickListener(this)
         t106.setOnClickListener(this)
         t107.setOnClickListener(this)
-
-
-
-        return view
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun onClick(v: View?){
         val tapBox = v as TextView
-        tapBox!!.setBackgroundResource(R.drawable.round_mine_tile)
+        var row:Int = 0
+        var col:Int = 0
+        val tv = textMap[tapBox]
+        if (tv != null) {
+            if (tv.length == 5){
+                col = tv[4].toString().toInt() - 1
+                row = 9
+            }
+            else{
+                row = tv[1].toString().toInt() - 1
+                col = tv[3].toString().toInt() - 1
+            }
+        }
+        if (openedTiles[row][col]) return
+        if (board[row][col] == -1){
+            tapBox.setBackgroundResource(R.drawable.round_mine_tile)
+        }
+        else if (board[row][col] != 0){
+            tapBox.setBackgroundResource(R.drawable.round_blank_tile)
+            tapBox.text = board[row][col].toString()
+            tapBox.setTextColor(Color.parseColor("#bdd0e1"))
+            openedTiles[row][col] = true
+        }
+        else{
+            tapBox.setBackgroundResource(R.drawable.round_blank_tile)
+            openBoard(row, col)
+        }
     }
 
-    fun generateMines(){
+    private fun openBoard(row:Int, col:Int){
+
+        if (row < 0 || row > 9 || col < 0 || col > 6) return
+        if (openedTiles[row][col]) return
+        openedTiles[row][col] = true
+        val tv = "t${row+1}_${col+1}"
+        if (board[row][col] == 0){
+            reverseTextMap[tv]?.setBackgroundResource(R.drawable.round_blank_tile)
+            openBoard(row-1, col-1)
+            openBoard(row-1, col)
+            openBoard(row-1, col+1)
+            openBoard(row, col-1)
+            openBoard(row, col+1)
+            openBoard(row+1, col-1)
+            openBoard(row+1, col)
+            openBoard(row+1, col+1)
+        }
+        else {
+            reverseTextMap[tv]?.setBackgroundResource(R.drawable.round_blank_tile)
+            reverseTextMap[tv]?.text = board[row][col].toString()
+            reverseTextMap[tv]?.setTextColor(Color.parseColor("#bdd0e1"))
+        }
+
+    }
+
+    private fun generateMines(){
+        var totalMines = 0
+        while (totalMines != 10){
+            for (i in 0..9){
+                for (j in 0..6){
+                    if ((totalMines == 10) || (board[i][j] == -1)) continue
+                    val rand = (1..700).random()
+                    if (rand <= 100){
+                        board[i][j] = -1
+                        totalMines++
+                    }
+                }
+            }
+        }
+        setBoardValues()
+    }
+
+    private fun setBoardValues(){
 
         for (i in 0..9){
             for (j in 0..6){
-
+                if (board[i][j] == -1){
+                    setVal(i-1, j-1)
+                    setVal(i-1, j)
+                    setVal(i-1, j+1)
+                    setVal(i, j-1)
+                    setVal(i, j+1)
+                    setVal(i+1, j-1)
+                    setVal(i+1, j)
+                    setVal(i+1, j+1)
+                }
             }
         }
+    }
+
+    private fun setVal(i:Int, j:Int){
+
+        if (i < 0 || i > 9 || j < 0 || j > 6) return
+        if (board[i][j] == -1) return
+        board[i][j]++
 
     }
 
