@@ -2,11 +2,12 @@ package com.devdhruv.minesweeper.Fragments
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.devdhruv.minesweeper.R
-import com.devdhruv.minesweeper.R.layout
 
 class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
@@ -21,7 +22,7 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view:View =  inflater.inflate(layout.fragment_easy_play, container, false)
+        val view:View =  inflater.inflate(R.layout.fragment_easy_play, container, false)
 
         init(view)
         generateMines()
