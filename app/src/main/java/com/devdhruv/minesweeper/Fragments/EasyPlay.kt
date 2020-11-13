@@ -11,7 +11,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.devdhruv.minesweeper.R
-import kotlinx.android.synthetic.main.fragment_easy_play.*
 
 class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
