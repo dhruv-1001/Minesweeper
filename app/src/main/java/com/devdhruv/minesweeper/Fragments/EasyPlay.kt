@@ -16,9 +16,9 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
     private val textMap = HashMap<TextView, String>()
     private val reverseTextMap = HashMap<String, TextView>()
-    private val board   = Array(10) {IntArray(7) {0} }
-    private var openedTiles = Array(10) {BooleanArray(7) {false} }
-    private var markedTiles = Array(10) {BooleanArray(7) {false} }
+    private val board = Array(10) { IntArray(7) { 0 } }
+    private var openedTiles = Array(10) { BooleanArray(7) { false } }
+    private var markedTiles = Array(10) { BooleanArray(7) { false } }
     private var timerVal: CountDownTimer? = null
     private var playTime = 3600000L
     private var markedCount = 0
@@ -30,7 +30,7 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view:View =  inflater.inflate(R.layout.fragment_easy_play, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_easy_play, container, false)
 
         init(view)
         generateMines()
@@ -43,14 +43,14 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
             requireActivity().onBackPressed()
         }
 
-        timerVal = object : CountDownTimer(playTime, 1000){
+        timerVal = object : CountDownTimer(playTime, 1000) {
 
             override fun onTick(p0: Long) {
                 var displayTime: String?
-                val minutes = ((3600000-p0) / 1000 / 60).toInt()
+                val minutes = ((3600000 - p0) / 1000 / 60).toInt()
                 displayTime = if (minutes / 10 == 0) "0$minutes:"
                 else "$minutes:"
-                val seconds = ((3600000-p0) / 1000).toInt() % 60
+                val seconds = ((3600000 - p0) / 1000).toInt() % 60
                 displayTime += if (seconds / 10 == 0) "0$seconds"
                 else "$seconds"
                 tvTimer.text = displayTime
@@ -70,7 +70,7 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
         timerVal?.cancel()
     }
 
-    private fun init(view: View){
+    private fun init(view: View) {
         val t11: TextView = view.findViewById(R.id.t11)
         val t12: TextView = view.findViewById(R.id.t12)
         val t13: TextView = view.findViewById(R.id.t13)
@@ -429,39 +429,36 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
     }
 
-    override fun onClick(view: View?){
+    override fun onClick(view: View?) {
         val tapBox = view as TextView
         var row = 0
         var col = 0
         val tv = textMap[tapBox]
         if (tv != null) {
-            if (tv.length == 5){
+            if (tv.length == 5) {
                 col = tv[4].toString().toInt() - 1
                 row = 9
-            }
-            else{
+            } else {
                 row = tv[1].toString().toInt() - 1
                 col = tv[3].toString().toInt() - 1
             }
         }
         if (openedTiles[row][col]) return
         if (markedTiles[row][col]) return
-        if (board[row][col] == -1){
+        if (board[row][col] == -1) {
             Toast.makeText(activity, "Oops! You tapped on a mine!", Toast.LENGTH_LONG).show()
             exposeMines()
-        }
-        else if (board[row][col] != 0){
+        } else if (board[row][col] != 0) {
             tapBox.setBackgroundResource(R.drawable.round_blank_tile)
             tapBox.text = board[row][col].toString()
             tapBox.setTextColor(Color.parseColor("#bdd0e1"))
             openedTiles[row][col] = true
             tilesOpenedCount++
-            if (tilesOpenedCount == 60){
+            if (tilesOpenedCount == 60) {
                 Toast.makeText(activity, "Good Job!! You beat the mines", Toast.LENGTH_LONG).show()
                 markMines()
             }
-        }
-        else{
+        } else {
             tapBox.setBackgroundResource(R.drawable.round_blank_tile)
             openBoard(row, col)
         }
@@ -473,44 +470,43 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
         var col = 0
         val tv = textMap[tapBox]
         if (tv != null) {
-            if (tv.length == 5){
+            if (tv.length == 5) {
                 col = tv[4].toString().toInt() - 1
                 row = 9
-            }
-            else{
+            } else {
                 row = tv[1].toString().toInt() - 1
                 col = tv[3].toString().toInt() - 1
             }
         }
         if (openedTiles[row][col]) return false
-        if (markedTiles[row][col]){
+        if (markedTiles[row][col]) {
             markedTiles[row][col] = false
             tapBox.setBackgroundResource(R.drawable.round_idle_tile)
             markedCount--
-            tvMines?.text  = (10-markedCount).toString()
-        }
-        else{
-            if (markedCount == 10){
-                Toast.makeText(activity, "You have used all of your markers", Toast.LENGTH_LONG).show()
+            tvMines?.text = (10 - markedCount).toString()
+        } else {
+            if (markedCount == 10) {
+                Toast.makeText(activity, "You have used all of your markers", Toast.LENGTH_LONG)
+                    .show()
                 return true
             }
             markedTiles[row][col] = true
             tapBox.setBackgroundResource(R.drawable.round_marked_tile)
             markedCount++
-            tvMines?.text = (10-markedCount).toString()
+            tvMines?.text = (10 - markedCount).toString()
         }
         return true
     }
 
-    private fun exposeMines(){
+    private fun exposeMines() {
 
         timerVal?.cancel()
-        for (i in 0..9){
-            for (j in 0..6){
-                val tv = "t${i+1}_${j+1}"
+        for (i in 0..9) {
+            for (j in 0..6) {
+                val tv = "t${i + 1}_${j + 1}"
                 reverseTextMap[tv]?.isClickable = false
                 reverseTextMap[tv]?.isLongClickable = false
-                if (board[i][j] == -1){
+                if (board[i][j] == -1) {
                     reverseTextMap[tv]?.setBackgroundResource(R.drawable.round_mine_tile)
                 }
             }
@@ -518,52 +514,51 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
     }
 
-    private fun markMines(){
+    private fun markMines() {
 
         timerVal?.cancel()
-        for (i in 0..9){
-            for (j in 0..6){
-                if (board[i][j] == -1){
-                    val tv = "t${i+1}_${j+1}"
+        for (i in 0..9) {
+            for (j in 0..6) {
+                if (board[i][j] == -1) {
+                    val tv = "t${i + 1}_${j + 1}"
                     reverseTextMap[tv]?.isClickable = false
                     reverseTextMap[tv]?.isLongClickable = false
                     if (!markedTiles[i][j]) markedCount++
                     reverseTextMap[tv]?.setBackgroundResource(R.drawable.round_marked_tile)
-                    tvMines?.text = (10-markedCount).toString()
+                    tvMines?.text = (10 - markedCount).toString()
                 }
             }
         }
 
     }
 
-    private fun openBoard(row:Int, col:Int){
+    private fun openBoard(row: Int, col: Int) {
 
         if (row < 0 || row > 9 || col < 0 || col > 6) return
         if (openedTiles[row][col]) return
         openedTiles[row][col] = true
         tilesOpenedCount++
-        if (tilesOpenedCount == 60){
+        if (tilesOpenedCount == 60) {
             Toast.makeText(activity, "Good Job!! You beat the mines", Toast.LENGTH_LONG).show()
             markMines()
         }
-        if (markedTiles[row][col]){
+        if (markedTiles[row][col]) {
             markedTiles[row][col] = false
             markedCount--
-            tvMines?.text = (10-markedCount).toString()
+            tvMines?.text = (10 - markedCount).toString()
         }
-        val tv = "t${row+1}_${col+1}"
-        if (board[row][col] == 0){
+        val tv = "t${row + 1}_${col + 1}"
+        if (board[row][col] == 0) {
             reverseTextMap[tv]?.setBackgroundResource(R.drawable.round_blank_tile)
-            openBoard(row-1, col-1)
-            openBoard(row-1, col)
-            openBoard(row-1, col+1)
-            openBoard(row, col-1)
-            openBoard(row, col+1)
-            openBoard(row+1, col-1)
-            openBoard(row+1, col)
-            openBoard(row+1, col+1)
-        }
-        else {
+            openBoard(row - 1, col - 1)
+            openBoard(row - 1, col)
+            openBoard(row - 1, col + 1)
+            openBoard(row, col - 1)
+            openBoard(row, col + 1)
+            openBoard(row + 1, col - 1)
+            openBoard(row + 1, col)
+            openBoard(row + 1, col + 1)
+        } else {
             reverseTextMap[tv]?.setBackgroundResource(R.drawable.round_blank_tile)
             reverseTextMap[tv]?.text = board[row][col].toString()
             reverseTextMap[tv]?.setTextColor(Color.parseColor("#bdd0e1"))
@@ -572,14 +567,14 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
     }
 
 
-    private fun generateMines(){
+    private fun generateMines() {
         var totalMines = 0
-        while (totalMines != 10){
-            for (i in 0..9){
-                for (j in 0..6){
+        while (totalMines != 10) {
+            for (i in 0..9) {
+                for (j in 0..6) {
                     if ((totalMines == 10) || (board[i][j] == -1)) continue
                     val rand = (1..700).random()
-                    if (rand <= 100){
+                    if (rand <= 100) {
                         board[i][j] = -1
                         totalMines++
                     }
@@ -589,25 +584,25 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
         setBoardValues()
     }
 
-    private fun setBoardValues(){
+    private fun setBoardValues() {
 
-        for (i in 0..9){
-            for (j in 0..6){
-                if (board[i][j] == -1){
-                    setVal(i-1, j-1)
-                    setVal(i-1, j)
-                    setVal(i-1, j+1)
-                    setVal(i, j-1)
-                    setVal(i, j+1)
-                    setVal(i+1, j-1)
-                    setVal(i+1, j)
-                    setVal(i+1, j+1)
+        for (i in 0..9) {
+            for (j in 0..6) {
+                if (board[i][j] == -1) {
+                    setVal(i - 1, j - 1)
+                    setVal(i - 1, j)
+                    setVal(i - 1, j + 1)
+                    setVal(i, j - 1)
+                    setVal(i, j + 1)
+                    setVal(i + 1, j - 1)
+                    setVal(i + 1, j)
+                    setVal(i + 1, j + 1)
                 }
             }
         }
     }
 
-    private fun setVal(i:Int, j:Int){
+    private fun setVal(i: Int, j: Int) {
 
         if (i < 0 || i > 9 || j < 0 || j > 6) return
         if (board[i][j] == -1) return

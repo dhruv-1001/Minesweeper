@@ -19,6 +19,7 @@
 
         <ImageView
             android:id="@+id/ivBack"
+            android:contentDescription="@string/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -38,6 +39,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:contentDescription="@string/setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/mines" />
@@ -46,7 +48,7 @@
                 android:id="@+id/tvMines"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10"
+                android:text="@string/initial_medium_mines"
                 android:textColor="@color/textColor"
                 android:textSize="20sp" />
 
@@ -57,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/textColor"
-            android:text="00:00"
+            android:text="@string/initial_time"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

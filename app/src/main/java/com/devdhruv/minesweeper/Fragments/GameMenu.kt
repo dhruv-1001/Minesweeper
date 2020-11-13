@@ -23,9 +23,9 @@ class GameMenu : Fragment() {
         var difficulty = 1
         updateDifficulty(difficulty, view)
 
-        val ivLeft:  ImageView = view.findViewById(R.id.ivLeft)
+        val ivLeft: ImageView = view.findViewById(R.id.ivLeft)
         val ivRight: ImageView = view.findViewById(R.id.ivRight)
-        val btPlay:  Button    = view.findViewById(R.id.btPlay)
+        val btPlay: Button = view.findViewById(R.id.btPlay)
         ivLeft.setOnClickListener {
             if (difficulty == 2) difficulty = 1
             else difficulty = 2
@@ -39,17 +39,22 @@ class GameMenu : Fragment() {
         }
 
         btPlay.setOnClickListener {
-            when (difficulty){
+            when (difficulty) {
                 1 -> view.findNavController().navigate(R.id.action_gameMenu_to_easyPlay)
                 2 -> view.findNavController().navigate(R.id.action_gameMenu_to_mediumPlay)
             }
+        }
+
+        val btAbout: Button = view.findViewById(R.id.btAbout)
+        btAbout.setOnClickListener {
+            view.findNavController().navigate(R.id.action_gameMenu_to_aboutFragment)
         }
 
         return view
     }
 
     @SuppressLint("SetTextI18n")
-    private fun updateDifficulty(difficulty: Int, view: View){
+    private fun updateDifficulty(difficulty: Int, view: View) {
 
         val tv: TextView = view.findViewById(R.id.tvDifficulty)
         if (difficulty == 1) tv.text = "Easy"

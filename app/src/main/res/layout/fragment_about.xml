@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".Fragments.AboutFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/about_game"
+            android:textColor="@color/tileColor"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text="@string/about1"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="@string/about2"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text="@string/about3"
+            android:textColor="@color/tileColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading3" />
+
+        <GridLayout
+            android:id="@+id/heading5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:columnCount="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading4">
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/two"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_mine_tile"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/two"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/three"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_mine_tile"
+                android:gravity="center"
+                android:textColor="@color/mineTile" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/two"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_mine_tile"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/two"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:background="@drawable/round_blank_tile"
+                android:gravity="center" />
+        </GridLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="@string/about4"
+            android:textColor="@color/tileColor"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading5" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="@string/about5"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading6" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="@string/about6"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading7" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="@string/about7"
+            android:textColor="@color/tileColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading8" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="@string/about8"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading9" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heading11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="@string/about9"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
