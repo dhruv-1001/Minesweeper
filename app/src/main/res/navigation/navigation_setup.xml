@@ -17,9 +17,6 @@
         <action
             android:id="@+id/action_gameMenu_to_mediumPlay"
             app:destination="@id/mediumPlay" />
-        <action
-            android:id="@+id/action_gameMenu_to_hardPlay"
-            app:destination="@id/hardPlay" />
     </fragment>
     <fragment
         android:id="@+id/mediumPlay"
@@ -37,15 +34,6 @@
         tools:layout="@layout/fragment_easy_play" >
         <action
             android:id="@+id/action_easyPlay_to_gameMenu"
-            app:destination="@id/gameMenu" />
-    </fragment>
-    <fragment
-        android:id="@+id/hardPlay"
-        android:name="com.devdhruv.minesweeper.Fragments.HardPlay"
-        android:label="fragment_hard_play"
-        tools:layout="@layout/fragment_hard_play" >
-        <action
-            android:id="@+id/action_hardPlay_to_gameMenu"
             app:destination="@id/gameMenu" />
     </fragment>
 </navigation>

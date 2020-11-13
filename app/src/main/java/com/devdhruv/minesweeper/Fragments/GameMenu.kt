@@ -27,14 +27,14 @@ class GameMenu : Fragment() {
         val ivRight: ImageView = view.findViewById(R.id.ivRight)
         val btPlay:  Button    = view.findViewById(R.id.btPlay)
         ivLeft.setOnClickListener {
-            difficulty--
-            if (difficulty == 0) difficulty = 3
+            if (difficulty == 2) difficulty = 1
+            else difficulty = 2
             updateDifficulty(difficulty, view)
         }
 
         ivRight.setOnClickListener {
-            difficulty++
-            if (difficulty == 4) difficulty = 1
+            if (difficulty == 1) difficulty = 2
+            else difficulty = 1
             updateDifficulty(difficulty, view)
         }
 
@@ -42,7 +42,6 @@ class GameMenu : Fragment() {
             when (difficulty){
                 1 -> view.findNavController().navigate(R.id.action_gameMenu_to_easyPlay)
                 2 -> view.findNavController().navigate(R.id.action_gameMenu_to_mediumPlay)
-                3 -> view.findNavController().navigate(R.id.action_gameMenu_to_hardPlay)
             }
         }
 
@@ -54,8 +53,7 @@ class GameMenu : Fragment() {
 
         val tv: TextView = view.findViewById(R.id.tvDifficulty)
         if (difficulty == 1) tv.text = "Easy"
-        else if (difficulty == 2) tv.text = "Medium"
-        else tv.text = "Hard"
+        else tv.text = "Medium"
 
     }
 

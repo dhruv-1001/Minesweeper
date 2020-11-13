@@ -2,12 +2,16 @@ package com.devdhruv.minesweeper.Fragments
 
 import android.graphics.Color
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.devdhruv.minesweeper.R
+import kotlinx.android.synthetic.main.fragment_easy_play.*
 
 class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
@@ -16,6 +20,11 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
     private val board   = Array(10) {IntArray(7) {0} }
     private var openedTiles = Array(10) {BooleanArray(7) {false} }
     private var markedTiles = Array(10) {BooleanArray(7) {false} }
+    private var timerVal: CountDownTimer? = null
+    private var playTime = 3600000L
+    private var markedCount = 0
+    private var tvMines: TextView? = null
+    private var tilesOpenedCount = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +35,40 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
 
         init(view)
         generateMines()
+        val tvTimer: TextView = view.findViewById(R.id.tvTimer)
+        tvMines = view.findViewById(R.id.tvMines)
 
+        val ivBack: ImageView = view.findViewById(R.id.ivBack)
+
+        ivBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+        timerVal = object : CountDownTimer(playTime, 1000){
+
+            override fun onTick(p0: Long) {
+                var displayTime: String?
+                val minutes = ((3600000-p0) / 1000 / 60).toInt()
+                displayTime = if (minutes / 10 == 0) "0$minutes:"
+                else "$minutes:"
+                val seconds = ((3600000-p0) / 1000).toInt() % 60
+                displayTime += if (seconds / 10 == 0) "0$seconds"
+                else "$seconds"
+                tvTimer.text = displayTime
+            }
+
+            override fun onFinish() {
+                // No one goes that far
+            }
+
+        }
+        (timerVal as CountDownTimer).start()
         return view
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timerVal?.cancel()
     }
 
     private fun init(view: View){
@@ -407,13 +448,19 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
         if (openedTiles[row][col]) return
         if (markedTiles[row][col]) return
         if (board[row][col] == -1){
-            tapBox.setBackgroundResource(R.drawable.round_mine_tile)
+            Toast.makeText(activity, "Oops! You tapped on a mine!", Toast.LENGTH_LONG).show()
+            exposeMines()
         }
         else if (board[row][col] != 0){
             tapBox.setBackgroundResource(R.drawable.round_blank_tile)
             tapBox.text = board[row][col].toString()
             tapBox.setTextColor(Color.parseColor("#bdd0e1"))
             openedTiles[row][col] = true
+            tilesOpenedCount++
+            if (tilesOpenedCount == 60){
+                Toast.makeText(activity, "Good Job!! You beat the mines", Toast.LENGTH_LONG).show()
+                markMines()
+            }
         }
         else{
             tapBox.setBackgroundResource(R.drawable.round_blank_tile)
@@ -440,12 +487,54 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
         if (markedTiles[row][col]){
             markedTiles[row][col] = false
             tapBox.setBackgroundResource(R.drawable.round_idle_tile)
+            markedCount--
+            tvMines?.text  = (10-markedCount).toString()
         }
         else{
+            if (markedCount == 10){
+                Toast.makeText(activity, "You have used all of your markers", Toast.LENGTH_LONG).show()
+                return true
+            }
             markedTiles[row][col] = true
             tapBox.setBackgroundResource(R.drawable.round_marked_tile)
+            markedCount++
+            tvMines?.text = (10-markedCount).toString()
         }
         return true
+    }
+
+    private fun exposeMines(){
+
+        timerVal?.cancel()
+        for (i in 0..9){
+            for (j in 0..6){
+                val tv = "t${i+1}_${j+1}"
+                reverseTextMap[tv]?.isClickable = false
+                reverseTextMap[tv]?.isLongClickable = false
+                if (board[i][j] == -1){
+                    reverseTextMap[tv]?.setBackgroundResource(R.drawable.round_mine_tile)
+                }
+            }
+        }
+
+    }
+
+    private fun markMines(){
+
+        timerVal?.cancel()
+        for (i in 0..9){
+            for (j in 0..6){
+                if (board[i][j] == -1){
+                    val tv = "t${i+1}_${j+1}"
+                    reverseTextMap[tv]?.isClickable = false
+                    reverseTextMap[tv]?.isLongClickable = false
+                    if (!markedTiles[i][j]) markedCount++
+                    reverseTextMap[tv]?.setBackgroundResource(R.drawable.round_marked_tile)
+                    tvMines?.text = (10-markedCount).toString()
+                }
+            }
+        }
+
     }
 
     private fun openBoard(row:Int, col:Int){
@@ -453,6 +542,16 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
         if (row < 0 || row > 9 || col < 0 || col > 6) return
         if (openedTiles[row][col]) return
         openedTiles[row][col] = true
+        tilesOpenedCount++
+        if (tilesOpenedCount == 60){
+            Toast.makeText(activity, "Good Job!! You beat the mines", Toast.LENGTH_LONG).show()
+            markMines()
+        }
+        if (markedTiles[row][col]){
+            markedTiles[row][col] = false
+            markedCount--
+            tvMines?.text = (10-markedCount).toString()
+        }
         val tv = "t${row+1}_${col+1}"
         if (board[row][col] == 0){
             reverseTextMap[tv]?.setBackgroundResource(R.drawable.round_blank_tile)
@@ -472,6 +571,7 @@ class EasyPlay : Fragment(), View.OnClickListener, View.OnLongClickListener {
         }
 
     }
+
 
     private fun generateMines(){
         var totalMines = 0
