@@ -12,7 +12,7 @@ This is the game menu UI, you can select difficulty (easy, medium) using the lef
 You can also navigate to “ABOUT” and find out more about the game.
 
 ### Game Play
-This is where you are supposed to open all the tiles without mines under them in order to win the game.
+This is where you are supposed to open all the tiles without mines under them in order to win the game. You can hold down to a tile to mark the same tile so that an accidental click won't open the marked tile.
 
 ### About Game
 This is the About Game screen and here are all the rules that you need to know to get started with the game. 
